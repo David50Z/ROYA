@@ -1,0 +1,11 @@
+fastapi==0.120.4
+langchain_core==1.0.2
+langchain_ollama==1.0.0
+openai==2.6.1
+psycopg2==2.9.10
+pydantic==2.12.3
+python-dotenv==1.2.1
+Requests==2.32.5
+vonage==4.7.2
+vonage_sms==1.1.6
+uvicorn
