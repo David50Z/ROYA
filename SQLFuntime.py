@@ -9,13 +9,17 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")  # we'll set this in .env
 
+DATABASE_URL = os.environ["DATABASE_URL"]
+if "?sslmode=" not in DATABASE_URL:
+    DATABASE_URL += "?sslmode=require"
+
 def require_ssl(u: str) -> str:
     p = urlparse(u)
     q = dict(parse_qsl(p.query))
     q.setdefault("sslmode", "require")
     return urlunparse(p._replace(query=urlencode(q)))
 
-conn1 = psycopg2.connect(require_ssl(DATABASE_URL))
+conn1 = psycopg2.connect(DATABASE_URL)
 cur1 = conn1.cursor()
 
 
